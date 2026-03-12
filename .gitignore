@@ -1,0 +1,39 @@
+# IDEs and development tools
+.idea
+.vscode
+.ruff_cache
+
+# Results
+1_dataset/settings.json
+output
+reports
+reports.zip
+results
+results.zip
+upload
+*.pdf
+*.zip
+git-version.txt
+git-date.txt
+*inventory.txt
+*inventroy.def
+
+# Python
+__pycache__
+
+# StepUp
+.stepup
+
+# Software environment
+activate
+.loadvenv
+venv
+venvs
+.envrc
+pre-commit-*.pyz
+
+# Other
+tmp
+pkgs
+slurm-*.*
+*.bak

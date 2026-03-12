@@ -1,0 +1,73 @@
+cff-version: 1.0.0
+message: If you use this software, please cite it using these metadata.
+title: The AutoCorrelation Integral Drill (ACID) 2 -- Test Bench
+abstract: >-
+  This repository contains the scripts and
+  [StepUp workflows](https://reproducible-reporting.github.io/stepup-core/stable/)
+  to validate algorithms and their implementations
+  for computing an integral of an autocorrelation function,
+  using the "AutoCorrelation Integral Drill" (ACID) test set.
+  More details on the ACID test can be found in the corresponding
+  [ACID Git repository](https://github.com/molmod/acid).
+authors:
+  - family-names: Bohy
+    given-names: Robbe
+    orcid: https://orcid.org/0009-0005-0024-0607
+    affiliation: >-
+      Center for Molecular Modeling (CMM),
+      Ghent University,
+      Technologiepark-Zwijnaarde 46,
+      B-9052,
+      Zwijnaarde, Belgium
+  - family-names: Toraman
+    given-names: Gözdenur
+    orcid: https://orcid.org/0000-0001-6785-333X
+    affiliation: >-
+      Labo Soete,
+      Ghent University,
+      Technologiepark-Zwijnaarde 46,
+      B-9052,
+      Ghent,
+      Belgium
+  - family-names: Fauconnier
+    given-names: Dieter
+    orcid: https://orcid.org/0000-0002-0257-4687
+    affiliation: >-
+      Labo Soete,
+      Ghent University,
+      Technologiepark-Zwijnaarde 46,
+      B-9052,
+      Ghent,
+      Belgium
+  - family-names: Verstraelen
+    given-names: Toon
+    orcid: https://orcid.org/0000-0001-9288-5608
+    affiliation: >-
+      Center for Molecular Modeling (CMM),
+      Ghent University,
+      Technologiepark-Zwijnaarde 46,
+      B-9052,
+      Zwijnaarde, Belgium
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.18947912
+    description: The concept DOI of the work.
+preferred-citation:
+  authors:
+    - family-names: Toraman
+      given-names: Gözdenur
+    - family-names: Fauconnier
+      given-names: Dieter
+    - family-names: Verstraelen
+      given-names: Toon
+  title: >-
+    STable AutoCorrelation Integral Estimator (STACIE):
+    Robust and accurate transport properties from molecular dynamics simulations
+  doi: 10.1021/acs.jcim.5c01475
+  type: article
+  identifiers:
+    - description: published journal article describing STACIE and the ACID test set
+      type: doi
+      value: 10.1021/acs.jcim.5c01475
+license: LGPL-3.0-or-later
+repository-code: https://github.com/molmod/acid
