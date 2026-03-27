@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: © 2026 ACID Test Contributors <https://doi.org/10.5281/zenodo.18947912>
+# SPDX-License-Identifier: CC-BY-SA-4.0
+
 cff-version: 1.0.0
 message: If you use this software, please cite it using these metadata.
 title: The AutoCorrelation Integral Drill (ACID) 2 -- Test Bench

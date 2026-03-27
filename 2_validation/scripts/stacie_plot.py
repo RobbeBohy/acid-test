@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Plot results with STACIE for a given test case."""
+# SPDX-FileCopyrightText: © 2026 ACID Test Contributors <https://doi.org/10.5281/zenodo.18947912>
+# SPDX-License-Identifier: CC-BY-SA-4.0 OR LGPL-3.0-or-later
+# """Plot results with STACIE for a given test case."""
 
 import argparse
 import pickle

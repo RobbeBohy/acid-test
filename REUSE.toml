@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: © 2026 ACID Test Contributors <https://doi.org/10.5281/zenodo.18947912>
+# SPDX-License-Identifier: CC-BY-SA-4.0
+
+version = 1
+
+[[annotations]]
+path = [
+    "4_zenodo/.zenodo-record-id.txt",
+    "2_validation/test_stacie_v1.0.0/requirements.txt",
+    "2_validation/test_stacie_v1.2.1/requirements.txt",
+    "requirements.txt",
+]
+SPDX-FileCopyrightText = "© 2026 ACID Test Contributors <https://doi.org/10.5281/zenodo.18947912>"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
