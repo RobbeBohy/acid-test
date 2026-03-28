@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: © 2026 ACID Test Contributors <https://doi.org/10.5281/zenodo.18947912>
+# SPDX-License-Identifier: CC-BY-SA-4.0 OR LGPL-3.0-or-later
 """Helper functions for StepUp plan.py, a.k.a. rules in other build systems."""
 
 from stepup.core.api import glob, loadns, mkdir, runpy, static

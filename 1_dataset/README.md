@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: © 2026 ACID Test Contributors <https://doi.org/10.5281/zenodo.18947912>
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # Local Copy of ACID 2 Dataset
 
 This directory should contain a local copy of the ACID 2 dataset.

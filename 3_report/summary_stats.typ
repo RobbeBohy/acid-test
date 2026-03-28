@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: © 2026 ACID Test Contributors <https://doi.org/10.5281/zenodo.18947912>
+// SPDX-License-Identifier: CC-BY-SA-4.0
+//
 - *Kernel*: the kernel used to generate the test data.
 - *compl.*: fraction of completed test cases (in %, ideally 100).
 - A model is fitted to the relative standard deviation (see scaling plots) of the form

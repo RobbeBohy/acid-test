@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: © 2026 ACID Test Contributors <https://doi.org/10.5281/zenodo.18947912>
+# SPDX-License-Identifier: CC-BY-SA-4.0 OR LGPL-3.0-or-later
 """Perform Monte Carlo simulations to validate the maximum a posteriori estimate."""
 
 import argparse
