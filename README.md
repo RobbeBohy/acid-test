@@ -41,7 +41,7 @@ or, when the header cannot be edited, in the `RESUSE.toml` file.
 In summary, the majority of the files in this repository are licensed under
 the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
 The main exceptions are the Python files, which have a choice of license between
-CC BY-SA 4.0 and the GNU Lesser General Public License v3.0 (LGPL-3.0).
+CC BY-SA 4.0 and the GNU Lesser General Public License v3.0 or later (LGPL-3.0-or-later).
 
 License deeds and legal code for all licenses used in this repository are available in the `LICENSES/` directory.
 They can also be consulted online at the following URLs:
