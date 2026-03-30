@@ -3,7 +3,7 @@ SPDX-FileCopyrightText: © 2026 ACID Test Contributors <https://doi.org/10.5281/
 SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
-This repository contains the scripts and
+This dataset contains the scripts and
 [StepUp workflows](https://reproducible-reporting.github.io/stepup-core/stable/)
 to validate algorithms and their implementations
 for computing an integral of an autocorrelation function,
@@ -11,7 +11,6 @@ using the "AutoCorrelation Integral Drill" (ACID) test set.
 More details on the ACID test can be found in the corresponding
 [acid Git repository](https://github.com/molmod/acid).
 
-a software package for the computation of the autocorrelation integral.
 The results of this analysis are discussed in the following paper:
 
 > Gözdenur Toraman, Dieter Fauconnier, and Toon Verstraelen

@@ -4,7 +4,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
 :rotating_light:
-This repository is under development as part of the preparation for the ACID 2 release.
+This Git repository is under development as part of the preparation for the ACID 2 release.
 
 You can view the latest version of the ACID 1 dataset and validation results at the following URLs:
 
@@ -13,7 +13,7 @@ You can view the latest version of the ACID 1 dataset and validation results at 
 
 # The AutoCorrelation Integral Drill (ACID) 2 -- Test Bench
 
-This repository contains the scripts and
+This Git repository contains the scripts and
 [StepUp workflows](https://reproducible-reporting.github.io/stepup-core/stable/)
 to validate algorithms and their implementations
 for computing an integral of an autocorrelation function,
