@@ -5,7 +5,7 @@ cff-version: 1.0.0
 message: If you use this software, please cite it using these metadata.
 title: The AutoCorrelation Integral Drill (ACID) 2 -- Test Bench
 abstract: >-
-  This repository contains the scripts and
+  This Git repository contains the scripts and
   [StepUp workflows](https://reproducible-reporting.github.io/stepup-core/stable/)
   to validate algorithms and their implementations
   for computing an integral of an autocorrelation function,
@@ -72,5 +72,7 @@ preferred-citation:
     - description: published journal article describing STACIE and the ACID test set
       type: doi
       value: 10.1021/acs.jcim.5c01475
-license: LGPL-3.0-or-later
-repository-code: https://github.com/molmod/acid
+license:
+  - CC-BY-SA-4.0
+  - LGPL-3.0-or-later
+repository-code: https://github.com/molmod/acid-test
