@@ -116,7 +116,7 @@ def plan(args: argparse.Namespace):
 def plan_scaling(
     case: str, kernel: str, quantity: str, path_settings: Path, paths_json: list[Path]
 ):
-    path_zip = f"../1_dataset/output/{kernel}_nstep01024_nseq0256.zip"
+    path_zip = f"../1_dataset/output/{kernel}.zip"
     path_scaling = f"reports/{case}/{kernel}_{quantity}_scaling.svg"
     path_ratios = f"reports/{case}/{kernel}_{quantity}_ratios.svg"
     path_csv_stats = f"reports/{case}/{kernel}_{quantity}_stats.csv"
@@ -142,7 +142,7 @@ def plan_scaling(
 
 
 def plan_cutoff(case: str, kernel: str, quantity: str, paths_json: list[Path]):
-    path_zip = f"../1_dataset/output/{kernel}_nstep01024_nseq0256.zip"
+    path_zip = f"../1_dataset/output/{kernel}.zip"
     path_cutoff = f"reports/{case}/{kernel}_{quantity}_cutoff.svg"
     paths_json = [p for p in paths_json if "nseq0064" in p.stem]
     runpy(

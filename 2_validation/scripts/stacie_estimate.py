@@ -10,14 +10,13 @@ import zipfile
 from traceback import print_exc
 
 import numpy as np
-import scipy as sp
 from path import Path
 from stacie import compute_spectrum, estimate_acint
 
 
 def main():
     args = parse_args()
-    run(args.case, args.model, args.out)
+    run(args.case, args.codec, args.nstep, args.nseq, args.model, args.out)
 
 
 def parse_args() -> argparse.Namespace:
@@ -27,7 +26,22 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "case",
         type=Path,
-        help="Path to the input ZIP file from the ACID dataset.",
+        help="Path to the kernel ZIP file from the ACID dataset.",
+    )
+    parser.add_argument(
+        "codec",
+        type=Path,
+        help="Path to the codec ZIP file for decoding integer sequences.",
+    )
+    parser.add_argument(
+        "nstep",
+        type=int,
+        help="Number of steps.",
+    )
+    parser.add_argument(
+        "nseq",
+        type=int,
+        help="Number of sequences.",
     )
     parser.add_argument(
         "model",
@@ -43,7 +57,7 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def run(inp: Path, model: str, out: Path):
+def run(inp: Path, codec: Path, nstep: int, nseq: int, model: str, out: Path):
     # Exit early if the file exists, meaning that is not recomputed even if the script changed.
     # You need to remove the files manually.
     if Path(out).is_file():
@@ -56,21 +70,27 @@ def run(inp: Path, model: str, out: Path):
         "lorentz": get_lorentz_model,
     }[model]()
 
-    # Open the input ZIP file and process all sequences.
+    # Load the codec lookup table for decoding integer sequences.
+    lookup_table = np.load(codec)["midpoint"]
+
+    step_path = f"nstep{nstep:05d}/"
+    seq_path = f"nstep{nstep:05d}/nseq{nseq:04d}/"
+
     with zipfile.ZipFile(inp, "r") as zf, zf.open("meta.json") as fh:
         meta = json.load(fh)
     std = np.sqrt(meta["var"])
     data = np.load(inp)
+    psd_ref = data[step_path + "psd.npy"]
+
     results = []
     for iseed in range(meta["nseed"]):
-        cfdi = data[f"sequences_{iseed:02d}"]
-        imax = np.iinfo(cfdi.dtype).max + 1
-        sequences = sp.stats.norm(scale=std).ppf((cfdi + 0.5) / imax)
+        cdfi = data[seq_path + f"sequences_{iseed:02d}.npy"]
+        sequences = lookup_table[cdfi] * std
         # The prefactor 2.0 is used as a matter of convention. It is not critical.
         # It just facilitates reading plots as the DC component of the PSD will
         # now match the autocorrelation integral without additional factors.
         spectrum = compute_spectrum(((2.0, np.array(row)) for row in sequences), prefactors=None)
-        spectrum.amplitudes_ref = np.array(data["psd"])
+        spectrum.amplitudes_ref = psd_ref
         try:
             result = estimate_acint(
                 spectrum,

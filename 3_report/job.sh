@@ -8,6 +8,8 @@
 #SBATCH --time=1:00:00
 #SBATCH --mem=5G
 
+cd ..
 source ./.loadvenv
+cd ${SLURM_SUBMIT_DIR}
 export PATH=$(realpath ${PWD}/scripts/):$PATH
 time stepup boot -n ${SLURM_CPUS_PER_TASK}

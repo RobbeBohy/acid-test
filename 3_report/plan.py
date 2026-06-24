@@ -18,6 +18,7 @@ wrap_git("git log -n1 --pretty='format:(%cs %h)'", out="git-date.txt")
 static(
     "../1_dataset/",
     "../1_dataset/output/",
+    "../1_dataset/output/codec.zip",
     "../1_dataset/settings.json",
     "../matplotlibrc",
     "scripts/",
@@ -35,14 +36,16 @@ glob("scripts/*.py")
 settings = loadns("../1_dataset/settings.json", do_amend=True)
 mkdir("reports/")
 mkdir("reports/shared/")
+path_codec = "../1_dataset/output/codec.zip"
 for kernel in settings.kernels:
-    path_zip = f"../1_dataset/output/{kernel}_nstep01024_nseq0256.zip"
+    path_zip = f"../1_dataset/output/{kernel}.zip"
     static(path_zip)
     runpy(
-        "./${inp} ${out}",
+        "./${inp} 1024 256 ${out}",
         inp=[
             "scripts/plot_sequences_subset.py",
             path_zip,
+            path_codec,
             "../matplotlibrc",
         ],
         out=f"reports/shared/subset_{kernel}.svg",

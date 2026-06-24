@@ -9,53 +9,48 @@ import zipfile
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy as sp
 from path import Path
 from stacie.spectrum import compute_spectrum
 
 
 def main():
     args = parse_args()
-    run(args.zip, args.mplrc, args.svg)
+    run(args.zip, args.codec, args.mplrc, args.nstep, args.nseq, args.svg)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Extract a small subset from the full data suitable for plotting the inputs."
     )
-    parser.add_argument(
-        "zip",
-        type=Path,
-        help="Input ACID ZIP file with full data.",
-    )
-    parser.add_argument(
-        "mplrc",
-        type=Path,
-        help="Matplotlib RC file.",
-    )
-    parser.add_argument(
-        "svg",
-        type=Path,
-        help="Output SVG image.",
-    )
+    parser.add_argument("zip", type=Path, help="Input ACID ZIP file with full data.")
+
+    parser.add_argument("codec", type=Path, help="Codec ZIP file for decoding integer sequences.")
+    parser.add_argument("mplrc", type=Path, help="Matplotlib RC file.")
+    parser.add_argument("nstep", type=int, help="Number of steps.")
+    parser.add_argument("nseq", type=int, help="Number of sequences.")
+    parser.add_argument("svg", type=Path, help="Output SVG image.")
     return parser.parse_args()
 
 
-def run(path_zip: Path, path_mplrc: Path, path_svg: Path):
+def run(path_zip: Path, path_codec: Path, path_mplrc: Path, nstep: int, nseq: int, path_svg: Path):
     with zipfile.ZipFile(path_zip, "r") as zf, zf.open("meta.json") as fh:
         meta = json.load(fh)
     std = np.sqrt(meta["var"])
+
+    lookup_table = np.load(path_codec)["midpoint"]
     data = np.load(path_zip)
 
-    # Take out subset of data for plotting
-    times = data["times"]
-    freqs = data["freqs"][:]
-    acf = data["acf"][:]
-    psd = data["psd"][:]
+    step_path = f"nstep{nstep:05d}/"
+    seq_path = f"nstep{nstep:05d}/nseq{nseq:04d}/"
+
+    times = data[step_path + "times.npy"]
+    freqs = data[step_path + "freqs.npy"]
+    acf = data[step_path + "acf.npy"]
+    psd = data[step_path + "psd.npy"]
+
     # Only take sequences for the first seed for plotting
-    cfdi = data["sequences_00"]
-    imax = np.iinfo(cfdi.dtype).max + 1
-    sequences = sp.stats.norm(scale=std).ppf((cfdi + 0.5) / imax)
+    cdfi = data[seq_path + "sequences_00.npy"]
+    sequences = lookup_table[cdfi] * std
 
     # Compute spectrum with Stacie, to be included in plot, only for first seed
     spectrum = compute_spectrum(sequences, prefactors=2)

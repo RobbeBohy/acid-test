@@ -12,6 +12,7 @@ def test_stacie(version: str):
         "../../1_dataset/",
         "../../1_dataset/settings.json",
         "../../1_dataset/output/",
+        "../../1_dataset/output/codec.zip",
         "../../matplotlibrc",
         "../../3_report/",
     )
@@ -28,21 +29,22 @@ def test_stacie(version: str):
         mkdir(f"../../3_report/results/stacie_v{version}_{model}/")
 
     settings = loadns("../../1_dataset/settings.json", do_amend=True)
+    path_codec = "../../1_dataset/output/codec.zip"
     for kernel in settings.kernels:
         models = ["quad"]
         if kernel.startswith("exp1"):
             models.append("lorentz")
+        path_zip = f"../../1_dataset/output/{kernel}.zip"
+        static(path_zip)
         for nseq in settings.nseqs:
             for nstep in settings.nsteps:
-                path_zip = f"../../1_dataset/output/{kernel}_nstep{nstep:05d}_nseq{nseq:04d}.zip"
-                static(path_zip)
                 for model in models:
                     path_pickle = (
                         f"output/{model}/estimate_{kernel}_nstep{nstep:05d}_nseq{nseq:04d}.pickle"
                     )
                     runpy(
-                        f"${{inp}} {model} ${{out}}",
-                        inp=["../scripts/stacie_estimate.py", path_zip],
+                        f"${{inp}} {nstep} {nseq} {model} ${{out}}",
+                        inp=["../scripts/stacie_estimate.py", path_zip, path_codec],
                         out=[path_pickle],
                     )
                     runpy(
