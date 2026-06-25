@@ -112,7 +112,7 @@ def run(args: argparse.Namespace):
 
     mpl.rc_file(args.mplrc)
     colors = list(plt.rcParams["axes.prop_cycle"].by_key()["color"])[: len(settings.nsteps)]
-    step_corrs = [-0.3, -0.1, 0.1, 0.3]
+    step_corrs = [-0.3, -0.15, 0.0, 0.15, 0.3]
 
     fig0, ax0 = plt.subplots()
     fig1, ax1 = plt.subplots()
